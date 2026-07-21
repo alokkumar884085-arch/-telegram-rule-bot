@@ -35,7 +35,17 @@ Thank you for following the rules.
 
 {status_text}
 
+text = f"""
+📜 GROUP RULES
+
 ━━━━━━━━━━━━━━━━━━
+
+🤖 Bot Status: {BOT_STATUS}
+
+{status_text}
+
+━━━━━━━━━━━━━━━━━━
+"""
 
 Need help? Contact the owner below.
 """
