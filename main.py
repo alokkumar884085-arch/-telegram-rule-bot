@@ -14,13 +14,16 @@ async def rules(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = f"""
 📜 GROUP RULES
 
-1. Respect everyone.
-2. No spam.
-3. No scams.
-4. No NSFW content.
-5. No harassment.
-6. Stay on topic.
-7. Follow admin instructions.
+1️⃣ Respect everyone.
+2️⃣ No spam or flooding.
+3️⃣ No advertising.
+4️⃣ No scams or fake giveaways.
+5️⃣ No NSFW content.
+6️⃣ No harassment or bullying.
+7️⃣ Stay on topic.
+8️⃣ Respect admins.
+9️⃣ No hate speech.
+🔟 Follow Telegram Terms of Service.
 
 ━━━━━━━━━━━━━━━━━━
 
@@ -30,24 +33,10 @@ async def rules(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 ━━━━━━━━━━━━━━━━━━
 
-Thank you for following the rules.
-"""
+Need help?
+Contact the owner using the button below.
 
-{status_text}
-
-text = f"""
-📜 GROUP RULES
-
-━━━━━━━━━━━━━━━━━━
-
-🤖 Bot Status: {BOT_STATUS}
-
-{status_text}
-
-━━━━━━━━━━━━━━━━━━
-"""
-
-Need help? Contact the owner below.
+❤️ Thank you for following the rules!
 """
 
     await update.message.reply_text(
