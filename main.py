@@ -1,3 +1,6 @@
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram.ext import ContextTypes
+
 BOT_STATUS = "🟢 Online"
 
 async def rules(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -43,3 +46,4 @@ Contact the owner using the button below.
         text,
         reply_markup=keyboard,
     )
+    
