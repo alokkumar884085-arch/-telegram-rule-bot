@@ -8,7 +8,7 @@ from telegram.ext import (
     filters,
 )
 
-TOKEN = os.getenv("7730045851:AAH5RgKnC_i1uhJozqrzyEB0bsJVmHs-l5w")
+TOKEN = os.getenv("BOT_TOKEN")
 
 WELCOME = """
 🎉 Welcome to the Group!
