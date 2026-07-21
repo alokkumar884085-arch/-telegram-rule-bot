@@ -1,19 +1,18 @@
-import os
-from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import (
-    Application,
-    CommandHandler,
-    MessageHandler,
-    ContextTypes,
-    filters,
-)
+BOT_STATUS = "🟢 Online"
 
-TOKEN = os.getenv("BOT_TOKEN")
+async def rules(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    keyboard = InlineKeyboardMarkup([
+        [InlineKeyboardButton("👑 Owner Contact", url="https://t.me/Escrow2929")]
+    ])
 
-WELCOME = """
-🎉 Welcome to the Group!
+    status_text = (
+        "✅ Bot is working perfectly."
+        if BOT_STATUS == "🟢 Online"
+        else "🟠 Bot is currently under maintenance."
+    )
 
-Please read the rules:
+    text = f"""
+📜 GROUP RULES
 
 1. Respect everyone.
 2. No spam.
@@ -22,54 +21,26 @@ Please read the rules:
 5. No harassment.
 6. Stay on topic.
 7. Follow admin instructions.
-8. Have fun!
 
-Enjoy your stay! ❤️
+━━━━━━━━━━━━━━━━━━
+
+🤖 Bot Status: {BOT_STATUS}
+
+{status_text}
+
+━━━━━━━━━━━━━━━━━━
+
+Thank you for following the rules.
 """
 
-RULES = """
-📜 GROUP RULES
+{status_text}
 
-1. Respect all members.
-2. No abusive behavior.
-3. No spam or flooding.
-4. No advertisements.
-5. No scams.
-6. No NSFW content.
-7. No hate speech.
-8. No doxxing.
-9. No impersonation.
-10. Follow admin decisions.
+━━━━━━━━━━━━━━━━━━
+
+Need help? Contact the owner below.
 """
 
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    keyboard = [
-        [InlineKeyboardButton("👑 Owner Contact", url="https://t.me/Escrow2929")]
-    ]
     await update.message.reply_text(
-        WELCOME,
-        reply_markup=InlineKeyboardMarkup(keyboard),
+        text,
+        reply_markup=keyboard,
     )
-
-async def rules(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text(RULES)
-
-async def welcome(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    for user in update.message.new_chat_members:
-        keyboard = [
-            [InlineKeyboardButton("👑 Owner Contact", url="https://t.me/Escrow2929")]
-        ]
-        await update.message.reply_text(
-            f"🎉 Welcome {user.first_name}!\n\n{WELCOME}",
-            reply_markup=InlineKeyboardMarkup(keyboard),
-        )
-
-app = Application.builder().token(TOKEN).build()
-
-app.add_handler(CommandHandler("start", start))
-app.add_handler(CommandHandler("rules", rules))
-app.add_handler(
-    MessageHandler(filters.StatusUpdate.NEW_CHAT_MEMBERS, welcome)
-)
-
-app.run_polling()
