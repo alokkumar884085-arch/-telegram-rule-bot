@@ -1,5 +1,6 @@
+import os
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import ContextTypes
+from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
 BOT_STATUS = "🟢 Online"
 
@@ -46,4 +47,16 @@ Contact the owner using the button below.
         text,
         reply_markup=keyboard,
     )
+
+def main():
+    token = "7730045851:AAH5RgKnC_i1uhJozqrzyEB0bsJVmHs-l5w"
+    app = ApplicationBuilder().token(token).build()
+
+    app.add_handler(CommandHandler("rules", rules))
+
+    print("Bot is polling...")
+    app.run_polling()
+
+if __name__ == "__main__":
+    main()
     
